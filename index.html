@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 教學課程 · 課程紀錄｜Mike（AI 實戰教練）</title>
+<meta name="description" content="主辦超過 10 場對外 AI 工具應用教學課程，累積超過 200 名學員的課程紀錄與現場花絮。">
+<style>
+:root{
+  --bg:#ffffff; --fg:#37352f; --muted:#787066; --line:#eceae4;
+  --accent:#2383e2; --soft:#f7f6f3; --card:#fbfbfa;
+  --maxw:920px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+a{color:inherit;}
+
+/* hero */
+.hero{position:relative; min-height:74vh; display:flex; align-items:flex-end;
+  color:#fff; overflow:hidden;}
+.hero-bg{position:absolute; inset:0; background:#222 no-repeat;
+  background-image:linear-gradient(180deg,rgba(20,22,30,.15),rgba(15,17,24,.55) 60%,rgba(15,17,24,.85)),url('IMG_8970.jpg');
+  background-size:auto, cover;
+  background-position:center, 26% 22%;}
+.hero-inner{position:relative; z-index:2; width:100%;}
+.hero .wrap{padding-top:64px; padding-bottom:48px;}
+.eyebrow{font-size:14px; letter-spacing:.18em; text-transform:uppercase;
+  color:#cde3fb; margin:0 0 14px;}
+.hero h1{font-size:clamp(30px,5vw,52px); line-height:1.15; margin:0 0 16px; font-weight:800; letter-spacing:-.5px;}
+.hero p.lead{font-size:clamp(16px,2.3vw,20px); max-width:640px; margin:0; color:#eef1f6;}
+
+/* stats */
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:16px; overflow:hidden; margin:-40px auto 0; position:relative; z-index:5;}
+.stat{background:var(--bg); padding:26px 18px; text-align:center;}
+.stat .num{font-size:clamp(28px,4.4vw,40px); font-weight:800; color:var(--fg); letter-spacing:-1px;}
+.stat .num span{color:var(--accent);}
+.stat .lab{font-size:14px; color:var(--muted); margin-top:4px;}
+
+section{padding:54px 0 8px;}
+.shead{display:flex; align-items:baseline; gap:12px; margin-bottom:8px;}
+.shead h2{font-size:26px; font-weight:800; margin:0; letter-spacing:-.3px;}
+.shead .en{color:var(--muted); font-size:14px; letter-spacing:.06em;}
+.intro{color:var(--muted); margin:0 0 26px; max-width:680px;}
+
+/* about callout */
+.callout{background:var(--soft); border:1px solid var(--line); border-radius:14px;
+  padding:22px 24px; display:flex; gap:16px; align-items:flex-start; margin-top:8px;}
+.callout .ico{font-size:26px; line-height:1;}
+.callout p{margin:0; color:#52504a;}
+.callout b{color:var(--fg);}
+
+/* themes (DM posters) */
+.themes{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
+.tcard{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--card);
+  display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease;}
+.tcard:hover{transform:translateY(-3px); box-shadow:0 14px 34px rgba(20,20,40,.12);}
+.tcard-img{display:block; overflow:hidden; background:#0d0f16; cursor:zoom-in;}
+.tcard-img img{width:100%; height:auto; display:block; transition:transform .4s ease;}
+.tcard:hover .tcard-img img{transform:scale(1.03);}
+.tcard-body{padding:18px 20px 22px;}
+.tnum{font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.1em;}
+.tcard h3{margin:5px 0 4px; font-size:19px; font-weight:800; line-height:1.35;}
+.tmeta{margin:0 0 10px; color:var(--muted); font-size:13px; letter-spacing:.02em;}
+.tmeta b{color:var(--fg); font-weight:700;}
+.tcard ul{margin:0; padding-left:18px; color:#52504a; font-size:14.5px;}
+.tcard li{margin:4px 0;}
+
+/* videos */
+.videos{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; max-width:620px; margin:0 auto;}
+.vcard{margin:0; border-radius:16px; overflow:hidden; background:#000; border:1px solid var(--line);}
+.vcard video{width:100%; height:100%; display:block; aspect-ratio:9/16; object-fit:contain; background:#000;}
+
+/* gallery masonry */
+.gallery{column-count:3; column-gap:14px;}
+.gitem{display:block; margin:0 0 14px; break-inside:avoid; border-radius:12px; overflow:hidden;
+  border:1px solid var(--line); cursor:zoom-in;}
+.gitem img{width:100%; display:block; transition:transform .35s ease, filter .35s ease;}
+.gitem:hover img{transform:scale(1.04); filter:brightness(1.04);}
+
+/* lightbox */
+.lb{position:fixed; inset:0; background:rgba(12,12,16,.92); display:none; align-items:center; justify-content:center; z-index:100; padding:24px;}
+.lb.open{display:flex;}
+.lb img{max-width:94vw; max-height:90vh; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.lb .x{position:absolute; top:18px; right:24px; color:#fff; font-size:34px; cursor:pointer; line-height:1; opacity:.85;}
+.lb .x:hover{opacity:1;}
+
+footer{margin-top:56px; padding:34px 0 56px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; text-align:center;}
+footer b{color:var(--fg);}
+
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(3,1fr); margin-top:-28px;}
+  .stat{padding:18px 8px;}
+  .themes{grid-template-columns:1fr;}
+  .videos{grid-template-columns:1fr 1fr;}
+  .gallery{column-count:2;}
+}
+@media (max-width:440px){
+  .videos{grid-template-columns:1fr;}
+  .gallery{column-count:1;}
+  .stat .lab{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <p class="eyebrow">AI 工具應用 · 教學課程紀錄</p>
+      <h1>把 AI 變成<br>每個人都用得上的工具</h1>
+      <p class="lead">主辦超過 10 場對外 AI 工具應用教學課程，累積超過 200 名學員。這裡是現場花絮、課程主題與教學成果的完整紀錄。</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="num"><span>10</span>+</div><div class="lab">主辦課程場次</div></div>
+    <div class="stat"><div class="num"><span>200</span>+</div><div class="lab">累積學員人數</div></div>
+    <div class="stat"><div class="num"><span>4</span> 大</div><div class="lab">核心課程主題</div></div>
+  </div>
+
+  <section>
+    <div class="shead"><h2>關於這個課程系列</h2><span class="en">Overview</span></div>
+    <div class="callout">
+      <div class="ico">🎯</div>
+      <p>我是 <b>Mike（AI 實戰教練）</b>，以「<b>讓沒有技術背景的人也能上手</b>」為核心，設計一系列 AI 工具應用實戰課程，主題涵蓋 AI 入門、NotebookLM、LINE 貼圖與能量桌布、Gemini 旅遊規劃等。課程強調<b>現場操作、跟著做就能完成作品</b>，已在<b>桃園、台中、台北</b>等地多場公開課程授課，累積超過 200 名學員。本人並具備 <b>AI 應用規劃師能力鑑定</b>授證資格。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>現場花絮影片</h2><span class="en">Highlights</span></div>
+    <p class="intro">課程現場的即時片段，呈現教學節奏與學員互動。</p>
+    <div class="videos">
+      <figure class="vcard">
+        <video controls preload="none" poster="clip1.jpg" playsinline>
+          <source src="clip1.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <figure class="vcard">
+        <video controls preload="none" poster="clip2.jpg" playsinline>
+          <source src="clip2.mp4" type="video/mp4">
+        </video>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>課程主題</h2><span class="en">Curriculum</span></div>
+    <p class="intro">四門實際開設的 AI 工具應用實戰課程，點擊海報可放大檢視。</p>
+    <div class="themes">
+      <article class="tcard">
+        <a class="tcard-img" href="dm1.jpg" data-lb>
+          <img loading="lazy" src="dm1_t.jpg" alt="AI 浪潮跟上了嗎？AI 工具應用實戰初階班">
+        </a>
+        <div class="tcard-body">
+          <span class="tnum">01</span>
+          <h3>AI 浪潮跟上了嗎？<br>AI 工具應用實戰初階班</h3>
+          <ul>
+            <li>從零開始的 AI 工具入門，建立觀念與實作基礎</li>
+            <li>適合完全沒有基礎的學員快速上手</li>
+          </ul>
+        </div>
+      </article>
+      <article class="tcard">
+        <a class="tcard-img" href="dm2.jpg" data-lb>
+          <img loading="lazy" src="dm2_t.jpg" alt="高效 AI 工具實戰工作坊 NotebookLM 篇">
+        </a>
+        <div class="tcard-body">
+          <span class="tnum">02</span>
+          <h3>高效 AI 工具實戰工作坊<br>NotebookLM 篇</h3>
+          <ul>
+            <li>遠離 AI 幻覺：打造精準的 AI 助理</li>
+            <li>效率革命、一鍵生成圖文、會議重點視覺化</li>
+          </ul>
+        </div>
+      </article>
+      <article class="tcard">
+        <a class="tcard-img" href="dm3.jpg" data-lb>
+          <img loading="lazy" src="dm3_t.jpg" alt="AI 應用實戰工作坊 LINE 貼圖與能量桌布">
+        </a>
+        <div class="tcard-body">
+          <span class="tnum">03</span>
+          <h3>AI 應用實戰工作坊<br>專屬 LINE 貼圖與能量桌布</h3>
+          <ul>
+            <li>用自己的照片生成專屬 LINE 貼圖</li>
+            <li>做出個人能量手機桌布，跟著做就能完成作品</li>
+          </ul>
+        </div>
+      </article>
+      <article class="tcard">
+        <a class="tcard-img" href="dm4.jpg" data-lb>
+          <img loading="lazy" src="dm4_t.jpg" alt="Gemini AI 旅遊規劃與全能隨身導遊實戰班">
+        </a>
+        <div class="tcard-body">
+          <span class="tnum">04</span>
+          <h3>Gemini AI 旅遊規劃<br>與全能隨身導遊實戰班</h3>
+          <ul>
+            <li>10 分鐘搞定行程與預算、在地私房推薦</li>
+            <li>即時翻譯、景點導覽，專屬 AI 隨身導遊</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>教學現場</h2><span class="en">Gallery</span></div>
+    <p class="intro">點擊任一張照片可放大檢視。</p>
+    <div class="gallery">
+      <a class="gitem port" href="IMG_9518.jpg" data-lb>
+        <img loading="lazy" src="IMG_9518_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_8970.jpg" data-lb>
+        <img loading="lazy" src="IMG_8970_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_8967.jpg" data-lb>
+        <img loading="lazy" src="IMG_8967_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_8977.jpg" data-lb>
+        <img loading="lazy" src="IMG_8977_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_8956.jpg" data-lb>
+        <img loading="lazy" src="IMG_8956_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_8906.jpg" data-lb>
+        <img loading="lazy" src="IMG_8906_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_6881.jpg" data-lb>
+        <img loading="lazy" src="IMG_6881_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_9543.jpg" data-lb>
+        <img loading="lazy" src="IMG_9543_t.jpg" alt="AI 教學課程現場">
+      </a>
+      <a class="gitem land" href="IMG_2926.jpg" data-lb>
+        <img loading="lazy" src="IMG_2926_t.jpg" alt="AI 教學課程現場">
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Mike（AI 實戰教練）</b>　AI 工具應用教學講師<br>
+    主辦 10+ 場課程 · 200+ 學員 · 桃園 / 台中 / 台北 · AI 應用規劃師能力鑑定授證</p>
+  </footer>
+</div>
+
+<div class="lb" id="lb"><span class="x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=document.getElementById('lbimg');
+  document.querySelectorAll('[data-lb]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault(); im.src=a.getAttribute('href'); lb.classList.add('open');});
+  });
+  function close(){lb.classList.remove('open'); im.src='';}
+  document.getElementById('lbx').addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+</body>
+</html>
